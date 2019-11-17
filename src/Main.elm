@@ -1,8 +1,7 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, button, div, text)
-import Html.Events exposing (onClick)
+import Html exposing (Html, div, text)
 
 -- MAIN
 
@@ -11,27 +10,18 @@ main =
 
 -- MODEL
 
-type alias Model = Int
+type alias Model = String
 
 init : Model
-init = 0
+init = "Hello, World!"
 
 -- UPDATE
 
-type Msg = Increment | Decrement
-
-update : Msg -> Model -> Model
-update msg model =
-    case msg of
-        Increment -> model + 1
-        Decrement -> model - 1
+update : none -> Model -> Model
+update _ model = model
 
 -- VIEW
 
-view : Model -> Html Msg
+view : Model -> Html none
 view model =
-    div []
-    [ button [ onClick Decrement ] [ text "-" ]
-    , div [ ] [ text (String.fromInt model ) ]
-    , button [ onClick Increment ] [ text "+" ]
-    ]
+    div [] [ text (model) ]
